@@ -1,0 +1,19 @@
+- name: Nginx and PHP
+  hosts: all
+  become: yes
+  tasks:
+    -   name: Nginx
+        dnf:
+            name: nginx-core
+            state: present
+
+    -   name: PHP
+        dnf:
+            name: php
+            state: present
+
+    -   name: Enable on starting
+        service:
+            name: nginx
+            enabled: yes
+            state: started
